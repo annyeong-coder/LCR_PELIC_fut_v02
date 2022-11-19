@@ -1,0 +1,111 @@
+# cleaning_steps
+These are the guidelines and principles I used to clean and remove irrellevant lines.
+
+1. In the "full_uncleaned_PELIC..." file, I temporarily saved it as an xlsx file and converted it to a table for easier sorting.
+
+# Aggressive cleaning
+
+Removed all responses of length 0 or 1. (3954 rows)
+
+Removed all responses of lenght 2. (941 rows)
+
+Using 'find and replace' then 'CNTRL+J' (from here: https://www.exceldemy.com/remove-line-breaks-in-excel/) to replace all the line breaks... still need to check for other types of breaks, like carriage returns.
+
+Using 'find and replace, removed all commas, as this is an "CSV - comma separated values file" (althought, I'm going to change it to tabs, because I will use \t in R.)
+
+Using 'find and replace, removed all equal signs, minus signs, plus signs, colons, semi-colons double spaces. (replaced all with a single space)
+
+CORRECTING Q.TYPE.ID - Went through mislabled q.type.id values (ones that weren't categorized between 1-10 as described in the guide). This included the incorrectly labeled q.type.id values of 3178, 3212, 3173, 3178, and 4273.  
+  Removed (16) rows labeled 3178, 3212, 3173, 3178, and 4273 (each contained between 3-13 characters) and were duplicates
+  Removed rows where the text was either empty or spurious (e.g. task instructions written by teachers.)
+  
+  REVERSED THIS AND LABELED THESE AS "NA" Revised the q.type.id values according to response (e.g. labeled paragraphs responses as "1" to designate it as a paragraph). 
+
+CORRECTING RES.TYPE (381 texts) - Focused on "0" values, which should have indicated selected response (such as multiple choice) as only constructed responses were to be analyzed.  Some seemed to be mislabeled.  Treated them in the following way.
+  First, deleted all of the ones that seemed correctly labeled as selected responses.  (e.g. closely matching answers from different unique anon.id values on different dates, as would occur if they were selected phrase or sentences answers from a reading comprehension task)
+  Second, deleted all of the fill-in-the-blank (q.type.id = 5) responses. None of these seemed constructed, no did they contain future constructions.
+  Third, deleted all responses that were simply lists of words (i.e. vocabulary task that simply involved listing words).
+  Fourth, found duplicated entries that seemed constructed yet were multiple versions of the same task and deleted duplicates with earlier response date values, leaving only the most recent version of the duplicated responses.
+
+1.0 WORKING ON DUPLICATES (currently 41,247 responses)
+Saved csv file as xlsx file for following processes. Concatenated all "anon.id" and "ques.id" to create a new column. After concatenation, converted concatenated formula answers into value answers. Then, Using conditional formatting, colored all unique responses as green backgrounds and all duplicated values as red backgrounds.  Copied this version's tab into two unique tabs in Excel: "temp_PELIC_ones", "temp_PELIC_threes", "temp_PELIC_twos"
+
+  1.1 ISOLATING UNIQUE RESPONSES (33,553 responses)
+  On the "temp_PELIC_ones" tab, filtered to show only red (non-unique) values for the "anon.id & ques.id" column. Then deleted them all.  This left 33 553 rows of data.
+
+  1.2 ISOLATING THREE RESPONSES (541 responses)
+  On the "temp_PELIC_threes" tab, filtered to show only green (unique) values for the "anon.id & ques.id" column. Then delted all unique values, leaving only (red) duplicates.  Filtered "version column for all '1' values and deleted them."  This left only the 2s and 3s values in the version column. Copied the resulting "temp_PELIC_threes" tab (which only includes responses that have multiple versions) into "temp_PELIC_twos." Then, filtered so that all responses with ONLY two versions appeared and deleted all of those rows, leaving only the final answers with only the third version.
+  
+  1.3 ISOLATING TWO RESPONSES (2954 responses)
+  On the "temp_PELIC_twos" tab, In order to isolate response that have both "two" and "three" versions (in other words, in order to prepare two find all of the two values that ONLY occured with threes, but not by themselves), I filtered for all duplicated 'anon.id & ques.id' responses and deleted them.  This left me with all of the unique twos (i.e. 2nd versions that )
+  (This penultimate step, 1.3, was the most tricky one. Finding all of the responses with only one version ended up being easy, as I just deleted any duplicate anon.id/ques.id responses.  Once this was done, the 3-version items was even easier - on a new tab, delete anything that wasn't the third response.  The ones with two versions was most difficult because I needed to remove all of their first versions, then verify that I only kept twos that didn't have a third version.)
+  
+  1.4 RECOMBINING THE NARROWED RESPONSES (37,048 responses)
+  As the title implies, all the (now unique) data from the ones, twos, and threes was combined on a single table.  A backup was first saved as 'PELIC_221112 1617 (all unique responses).xlsx', then all extra sheets were deleted and the 'PELIC_221112 1617 (all unique responses).csv' (non-backup version) was converted and saved as a csv file.
+  
+  1.5 FINDING ADDITIONAL DUPLICATES 
+  With only unique versions left, can now find additional duplicate answers.  Concatenated anon.id and text. For both columns: formatted duplicates as red, unique as green.  Filtered for duplicated (red) text and and unique (green) anon.id&text. Duplicate text but unique anon.id&text = selected response, not constructed.  Deleted all of them. Cleared filters.  Filtered by duplicate anon.id&text. Sorted text column alphabetically. These duplicate anon.id&text answers indicate exact same answers by the same people, yet they weren't different versions (removed earlier). Most often, these 'duplicates' had the same creation date. So, most likely, this was duplicate entries of one legitimate response - an error in data entry. Therefore, one of their answers were kept, and the remaining duplicates were deleted.
+
+MORE CLEANING - Non-English responses.
+Sorted the 'text' column of 'PELIC_221112 1617 (all unique responses).csv' into alphabetical order, and deleted any remaining entries that contained only non-English or non-UTF-8 encoded characters. Removed 258 rows with non-encoded characters and 38 rows with #NAME from formula characters that didn't convert properly between xlsx and csv files (likely a source of error on my part).
+
+
+CREATED FINAL VERSIONS (pre-tagging)
+  "PELIC.cleaned.final.meta untagged 221117 1849.xlsx"
+  "PELIC.cleaned.final.nometa untagged 221117 1849.xlsx" (removed all columns except "text" column - prepping for CLAWS4 tagging)
+  Exported "PELIC.cleaned.final.nometa untagged 221117 1849.xlsx" to tab-delimited "PELIC.cleaned.final.nometa untagged 221117 1849.txt"
+
+CREATED FINAL VERSIONS (with CLAWS4-tagging)
+  Imported tagged version of "PELIC.cleaned.final.nometa untagged 221117 1849.txt"
+  "PELIC.cleaned.final.meta tagged 221117 1849.xlsx"
+  "PELIC.cleaned.final.nometa tagged 221117 1849.xlsx" (removed all columns except "text" column - prepping for CLAWS4 tagging) 
+ 
+  
+  Exported "PELIC.minimal.untagged.justlanguage.221112.1752.csv" to tab-delimited "PELIC.minimal.untagged.justlanguage.221112.1752.txt"
+
+
+-------------------------------------------------------
+#######################################################
+-------------------------------------------------------
+
+## Need to think of other possible things that will cause problems in R or Excel. Maybe double-quotes, maybe other things.
+
+
+
+
+
+
+
+## Remove selected answers.  (Selected vs. constructed answers.)
+## Remove fill-in-the-blank (etc.) types of answers.
+
+
+
+# Multiple ansers
+In order to delete all of the duplicates, I need to display ONLY the answers that have third version.
+	Find out which participants gave multiple responses. (Or opposite? Single responses?)
+	Find out which multi-reponse answers have a 3rd version.
+	Show ONLY the responses that have 1st, 2nd, 3rd versions.
+	Hide all answers that have only 1 or two versions. 
+	Hide the 3rd versions.
+	Highlight/select the 1st and 2nd versions (of those above). Delete.
+
+## !!! I NEED TO GET RID OF THE 'ALMOST DUPLICATES'
+### Currently sorted by: anon.id > ques.id > version  (This is the first step to finding duplicate responses; I don't know how to procede in order to efficiently remove the 1st and 2nd versions... or the second versions of ones that only have two answers.  I probably have to remove the '2 answers' version first, then handle the '3 answers' versions.)
+
+
+### Numbers of 3s 555
+### Numbers of 2s 3798
+### Numbers of 1s 36956
+
+So, I need to remove at least 555 number 2s and 1s.
+So, I need to remove at least 3243 number 1s.  (after removing 555s)
+
+
+
+Removed 
+Removed 
+Removed 
+Removed 
+Removed 
+Removed 
