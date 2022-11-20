@@ -1,0 +1,29 @@
+﻿TENSE,,TIME,,
+,,past time,present time,future time
+present,simple,,I want a coffee.,I leave tomorrow.
+,,She     likes     coffee.,,
+,continuous,,I am having dinner.,I am taking my exam next month.
+,,They  are  living  in  London.,,
+,perfect,I have seen ET.,I have finished.,
+,perfect continuous,I have been playing tennis.,,
+,,We have been working for four hours.,,
+past,simple,I finished one hour ago.,"If she loved you now, she would marry you.","If you came tomorrow, you would see her."
+,continuous,I was working at 2am this morning.,,
+,perfect,I had not eaten for 24 hours.,,
+,perfect continuous,We had been working for 3 hours.,"If I had been working now, I would have missed you.","If I had been working tomorrow, I could not have agreed."
+future,simple,,Hold on. I'll do it now.,I'll see you tomorrow.
+,continuous,,,I will be working at 9pm tonight.
+,perfect,,,I will have finished by 9pm tonight.
+,,We will have been married for ten years next month.,,
+,perfect continuous,,,They may be tired when you arrive because they will have been working.
+,,"In 30 minutes, we will have been working for four hours.",,
+source:,PELIC_fut_v02 folder,english future tenses.csv,,
+Adverbs,,,Nouns,
+next,,,tomorrow,
+later,,,tonight,
+soon,,,future,
+this (time exp),,,,
+,,,,
+,,,,
+,,,,
+,,,,

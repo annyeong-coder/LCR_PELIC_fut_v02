@@ -17,6 +17,8 @@ xPELIC <- read_delim("data_raw/PELIC.cleaned.final.meta tagged 221118 2228.txt",
                      na = "NA", trim_ws = TRUE)
 head(xPELIC)
 
+xPELIC.colnames <-(colnames(xPELIC)); xPELIC.colnames
+
 
 # Only iff you want to delete all the variables that are there in the environment what you can do is you can use the “rm” with an argument “list” is equal to “ls” followed by a parenthesis. 
 
