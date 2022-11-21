@@ -1,0 +1,186 @@
+This is used for replacing values in one column using substitution values (from a 2-column chart).
+If the first column has too many values to easily find and replace, then create 2-column chart with all of the values to be replaced in the left column and all of the values that should be substituted for them in the right column.
+
+
+=================================================================================================
+=================================================================================================
+=================================================================================================
+https://www.youtube.com/watch?v=X7x1DG_GSQc
+Find and Replace Multiple Values in Excel - ALL AT ONCE!
+Code:
+Sub MultiFindNReplace()
+'Update 20140722
+Dim Rng As Range
+Dim InputRng As Range, ReplaceRng As Range
+xTitleId = "KutoolsforExcel"
+Set InputRng = Application.Selection
+Set InputRng = Application.InputBox("Original Range ", xTitleId, InputRng.Address, Type:=8)
+Set ReplaceRng = Application.InputBox("Replace Range :", xTitleId, Type:=8)
+Application.ScreenUpdating = False
+For Each Rng In ReplaceRng.Columns(1).Cells
+    InputRng.Replace what:=Rng.Value, replacement:=Rng.Offset(0, 1).Value, Lookat:=xlWhole
+Next
+Application.ScreenUpdating = True
+End Sub
+
+
+=================================================================================================
+
+https://www.youtube.com/watch?v=xI5wOwPrEI0
+How to find and replace multiple values in Excel all at once
+
+Code: 
+et BulkReplace = (DataTable as table, FindReplaceTable as table, DataTableColumn as list) =>
+    let
+        FindReplaceList = Table.ToRows(FindReplaceTable),
+        Counter = Table.RowCount(FindReplaceTable),
+        BulkReplaceValues = (DataTableTemp, n) => 
+        let 
+            ReplaceTable = Table.ReplaceValue(
+                DataTableTemp,
+                if FindReplaceList{n}{0} = null then "" else FindReplaceList{n}{0},
+                if FindReplaceList{n}{1} = null then "" else FindReplaceList{n}{1},
+                Replacer.ReplaceText,
+                DataTableColumn
+                )
+        in
+            if n = Counter - 1 
+                then ReplaceTable
+                else @BulkReplaceValues(ReplaceTable, n + 1),
+        Output = BulkReplaceValues(DataTable, 0)   
+    in
+        Output
+in
+    BulkReplace
+
+====================================================================================
+Learning R: 21 How to replace single and multiple values in R
+https://www.youtube.com/watch?v=Cmd8cJCk2lA
+
+========================================================================
+Replace Multiple Values in Several Columns of Data Frame in R (2 Examples) | sapply() & replace()
+https://www.youtube.com/watch?v=CaWjk53uXU0
+
+R code of this video: 
+
+data ＜- data.frame(x1 = c(1, 2, 3, 1, 1, 2),        # Create example data
+                   x2 = 1:6,
+                   x3 = 3:1)
+data                                                # Print example data
+
+val_repl ＜- c(1, 3)                                 # Specify values to be replaced
+val_repl                                            # Print vector of values
+
+data_new1 ＜- sapply(data,                           # Replace values in all columns
+                    function(x) replace(x, x %in% val_repl, 99))
+data_new1                                           # Print updated data frame
+
+col_repl ＜- c("x2", "x3")                           # Specify columns
+col_repl                                            # Print vector of columns
+
+data_new2 ＜- data                                   # Duplicate data frame
+data_new2[col_repl] ＜- sapply(data_new2[col_repl],  # Replace values in certain columns
+                              function(x) replace(x, x %in% val_repl, 99))
+data_new2                                           # Print updated data frame
+
+
+============================================================================================
+Learning R: 7 How to replace strings in R using str_replace stringr package and multiple columns
+https://www.youtube.com/watch?v=xe1bX-Nfxj0
+
+Code and details here:
+https://www.analyticohub.com/2020/03/21/2020-03-21-replace-strings-in-r-using-str-replace/
+
+
+
+Replace Strings in R using str_replace
+3rd party packages
+
+library(stringr)
+library(readr)
+library(dplyr)
+Read in Data
+
+head(df)
+## # A tibble: 6 x 4
+##   id                   dateAdded           dateUpdated         address          
+##   <chr>                <dttm>              <dttm>              <chr>            
+## 1 AVwc252WIN2L1WUfpqLP 2016-10-30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 2 AVwc252WIN2L1WUfpqLP 2016-10-30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 3 AVwc252WIN2L1WUfpqLP 2016-10-30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 4 AVwdOclqIN2L1WUfti38 2015-11-28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd   
+## 5 AVwdOclqIN2L1WUfti38 2015-11-28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd   
+## 6 AVwdOclqIN2L1WUfti38 2015-11-28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd
+Replace the first pattern in a single column
+
+df1 <- df %>% mutate(dateAdded = str_replace(string = dateAdded, pattern = "-",replacement = "."))
+head(df1)
+## # A tibble: 6 x 4
+##   id                   dateAdded           dateUpdated         address          
+##   <chr>                <chr>               <dttm>              <chr>            
+## 1 AVwc252WIN2L1WUfpqLP 2016.10-30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 2 AVwc252WIN2L1WUfpqLP 2016.10-30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 3 AVwc252WIN2L1WUfpqLP 2016.10-30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 4 AVwdOclqIN2L1WUfti38 2015.11-28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd   
+## 5 AVwdOclqIN2L1WUfti38 2015.11-28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd   
+## 6 AVwdOclqIN2L1WUfti38 2015.11-28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd
+Replace all with set pattern in a single column
+
+df2 <- df %>% mutate(dateAdded = str_replace_all(string = dateAdded, pattern = "-",replacement = "."))
+head(df2)
+## # A tibble: 6 x 4
+##   id                   dateAdded           dateUpdated         address          
+##   <chr>                <chr>               <dttm>              <chr>            
+## 1 AVwc252WIN2L1WUfpqLP 2016.10.30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 2 AVwc252WIN2L1WUfpqLP 2016.10.30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 3 AVwc252WIN2L1WUfpqLP 2016.10.30 21:42:42 2018-09-10 21:06:27 5921 Valencia Cir
+## 4 AVwdOclqIN2L1WUfti38 2015.11.28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd   
+## 5 AVwdOclqIN2L1WUfti38 2015.11.28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd   
+## 6 AVwdOclqIN2L1WUfti38 2015.11.28 19:19:35 2018-09-10 21:06:16 7520 Teague Rd
+Replace multiple patterns in a single column
+
+df3 <- df %>% mutate(dateAdded = str_replace_all(string = dateAdded, pattern = "[-:]",replacement = "hey"))
+head(df3)
+## # A tibble: 6 x 4
+##   id                 dateAdded               dateUpdated         address        
+##   <chr>              <chr>                   <dttm>              <chr>          
+## 1 AVwc252WIN2L1WUfp… 2016hey10hey30 21hey42… 2018-09-10 21:06:27 5921 Valencia …
+## 2 AVwc252WIN2L1WUfp… 2016hey10hey30 21hey42… 2018-09-10 21:06:27 5921 Valencia …
+## 3 AVwc252WIN2L1WUfp… 2016hey10hey30 21hey42… 2018-09-10 21:06:27 5921 Valencia …
+## 4 AVwdOclqIN2L1WUft… 2015hey11hey28 19hey19… 2018-09-10 21:06:16 7520 Teague Rd 
+## 5 AVwdOclqIN2L1WUft… 2015hey11hey28 19hey19… 2018-09-10 21:06:16 7520 Teague Rd 
+## 6 AVwdOclqIN2L1WUft… 2015hey11hey28 19hey19… 2018-09-10 21:06:16 7520 Teague Rd
+Remove muliple patterns in a single colomn
+
+df4 <- df %>% mutate(dateAdded = str_replace_all(string = dateAdded, pattern = "[-:]",replacement = ""))
+head(df4)
+## # A tibble: 6 x 4
+##   id                   dateAdded       dateUpdated         address          
+##   <chr>                <chr>           <dttm>              <chr>            
+## 1 AVwc252WIN2L1WUfpqLP 20161030 214242 2018-09-10 21:06:27 5921 Valencia Cir
+## 2 AVwc252WIN2L1WUfpqLP 20161030 214242 2018-09-10 21:06:27 5921 Valencia Cir
+## 3 AVwc252WIN2L1WUfpqLP 20161030 214242 2018-09-10 21:06:27 5921 Valencia Cir
+## 4 AVwdOclqIN2L1WUfti38 20151128 191935 2018-09-10 21:06:16 7520 Teague Rd   
+## 5 AVwdOclqIN2L1WUfti38 20151128 191935 2018-09-10 21:06:16 7520 Teague Rd   
+## 6 AVwdOclqIN2L1WUfti38 20151128 191935 2018-09-10 21:06:16 7520 Teague Rd
+Remove a single pattern in the full datafame
+
+df5 <- data.frame(lapply(df, function(x) {
+               str_replace_all(x, "-", "HELP")
+                }))
+head(df5)
+##                     id                 dateAdded               dateUpdated
+## 1 AVwc252WIN2L1WUfpqLP 2016HELP10HELP30 21:42:42 2018HELP09HELP10 21:06:27
+## 2 AVwc252WIN2L1WUfpqLP 2016HELP10HELP30 21:42:42 2018HELP09HELP10 21:06:27
+## 3 AVwc252WIN2L1WUfpqLP 2016HELP10HELP30 21:42:42 2018HELP09HELP10 21:06:27
+## 4 AVwdOclqIN2L1WUfti38 2015HELP11HELP28 19:19:35 2018HELP09HELP10 21:06:16
+## 5 AVwdOclqIN2L1WUfti38 2015HELP11HELP28 19:19:35 2018HELP09HELP10 21:06:16
+## 6 AVwdOclqIN2L1WUfti38 2015HELP11HELP28 19:19:35 2018HELP09HELP10 21:06:16
+##             address
+## 1 5921 Valencia Cir
+## 2 5921 Valencia Cir
+## 3 5921 Valencia Cir
+## 4    7520 Teague Rd
+## 5    7520 Teague Rd
+## 6    7520 Teague Rd
+

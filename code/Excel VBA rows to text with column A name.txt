@@ -1,0 +1,25 @@
+Sub Export_Files()
+    Dim sExportFolder, sFN
+    Dim rArticleName As Range
+    Dim rDisclaimer As Range
+    Dim oSh As Worksheet
+    Dim oFS As Object
+    Dim oTxt As Object
+
+    'sExportFolder = path to the folder you want to export to
+    'oSh = The sheet where your data is stored
+    sExportFolder = "D:\SNU Drive\2022-2 fall\_01 LCR\my_research\_future_project\LCR_proj_Gsynced_only\untagged_prof2"
+    Set oSh = Sheet7
+
+    Set oFS = CreateObject("Scripting.Filesystemobject")
+
+    For Each rArticleName In oSh.UsedRange.Columns("A").Cells
+        Set rDisclaimer = rArticleName.Offset(, 1)
+
+        'Add .txt to the article name as a file name
+        sFN = rArticleName.Value & ".txt"
+        Set oTxt = oFS.OpenTextFile(sExportFolder & "\" & sFN, 2, True)
+        oTxt.Write rDisclaimer.Value
+        oTxt.Close
+    Next
+End Sub

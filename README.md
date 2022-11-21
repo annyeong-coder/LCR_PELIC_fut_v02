@@ -35,3 +35,14 @@ This is the second version of v02.  Initial commit on laptop.
   4. Test run, fix.
   5. Run and subset as an R-internal Dataset.
   6. Assign the subset to a variable.
+  
+# Gries Model: ####
+  
+  Data to be entered:
+- analysis you want to perform: 2
+- distinctive categories: 1 (for "2 alternatives")
+- input format: 2 (frequency table)
+- do want the results of (two-tailed!) Fisher-Yates exact tests: no
+- load the tab-delimited input file: <2b.csv> (example input file for a distinctive collexeme analysis of a few verbs and the ditransitive vs. the prepositional dative in the ICE-GB)
+output file: <2b_out.csv>
+plus the script generates a plot with what I think are the most useful results that can be computed given the limited input - ideally, one would include dispersion and uncertainty intervals as discussed in Gries (2019c, 2022c, d, in progress e)
