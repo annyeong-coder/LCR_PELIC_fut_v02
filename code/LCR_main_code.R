@@ -22,8 +22,35 @@ xPELIC.colnames <-(colnames(xPELIC)); xPELIC.colnames
 
 # Only iff you want to delete all the variables that are there in the environment what you can do is you can use the “rm” with an argument “list” is equal to “ls” followed by a parenthesis. 
 
-# Section 01:name ####
+# Section 01:DCA analysis ####
+source("https://www.stgries.info/teaching/groningen/coll.analysis.r")
+library(collostructions)
 
+# p2
+goingto.will.p2 <- read.table("DCA_p2.csv", header = TRUE, sep = "\t", quote = "\"")
+head(goingto.will.p2)
+p2future <- collex.dist(goingto.will.p2); p2future
+
+# p3
+goingto.will.p3 <- read.table("DCA_p3.csv", header = TRUE, sep = "\t", quote = "\"")
+head(goingto.will.p3)
+p3future <- collex.dist(goingto.will.p3); p3future
+head(goingto.will.p3)
+tail(goingto.will.p3)
+
+# p4
+goingto.will.p4 <- read.table("DCA_p4.csv", header = TRUE, sep = "\t", quote = "\"")
+head(goingto.will.p4)
+p4future <- collex.dist(goingto.will.p2); p4future
+head(goingto.will.p4)
+tail(goingto.will.p4)
+
+# p5
+goingto.will.p5 <- read.table("DCA_p5.csv", header = TRUE, sep = "\t", quote = "\"")
+head(goingto.will.p5)
+p5future <- collex.dist(goingto.will.p5); p5future
+head(goingto.will.p5)
+tail(goingto.will.p5)
 
 # Section 02:name ####
 
