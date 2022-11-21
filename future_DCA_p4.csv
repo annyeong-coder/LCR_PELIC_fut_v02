@@ -1,69 +1,69 @@
-﻿VERB.p4,GOING_TO,WILL
-achieve,1,18
-affect,2,59
-ask,1,30
-be,77,1403
-become,1,83
-bring,21,35
-buy,10,33
-call,1,35
-change,3,33
-come,3,60
-continue,5,29
-cook,1,1
-cost,1,15
-die,4,1
-do,19,98
-eat,5,19
-end,2,17
-enjoy,3,31
-face,1,29
-fail,2,3
-feel,2,87
-find,2,122
-forget,1,12
-get,14,189
-give,5,92
-go,30,149
-happen,9,43
-have,12,378
-help,3,271
-increase,3,28
-keep,4,35
-learn,5,64
-live,11,46
-look,2,26
-lose,3,44
-love,2,16
-make,7,206
-meet,3,20
-miss,2,26
-notice,1,1
-pass,1,1
-pay,1,16
-pick,6,1
-prepare,1,13
-put,3,17
-read,1,14
-say,4,13
-see,9,49
-share,2,1
-show,1,19
-spend,2,26
-start,12,34
-stay,2,22
-stop,3,5
-study,18,14
-succeed,2,23
-take,12,66
-talk,16,36
-tell,7,24
-think,2,33
-trust,1,1
-try,10,56
-turn,1,16
-use,1,39
-visit,12,18
-wait,2,1
-want,1,15
-work,1,20
+﻿VERB	GOING_TO	WILL
+achieve	1	18
+affect	2	59
+ask	1	30
+be	77	1403
+become	1	83
+bring	21	35
+buy	10	33
+call	1	35
+change	3	33
+come	3	60
+continue	5	29
+cook	1	1
+cost	1	15
+die	4	1
+do	19	98
+eat	5	19
+end	2	17
+enjoy	3	31
+face	1	29
+fail	2	3
+feel	2	87
+find	2	122
+forget	1	12
+get	14	189
+give	5	92
+go	30	149
+happen	9	43
+have	12	378
+help	3	271
+increase	3	28
+keep	4	35
+learn	5	64
+live	11	46
+look	2	26
+lose	3	44
+love	2	16
+make	7	206
+meet	3	20
+miss	2	26
+notice	1	1
+pass	1	1
+pay	1	16
+pick	6	1
+prepare	1	13
+put	3	17
+read	1	14
+say	4	13
+see	9	49
+share	2	1
+show	1	19
+spend	2	26
+start	12	34
+stay	2	22
+stop	3	5
+study	18	14
+succeed	2	23
+take	12	66
+talk	16	36
+tell	7	24
+think	2	33
+trust	1	1
+try	10	56
+turn	1	16
+use	1	39
+visit	12	18
+wait	2	1
+want	1	15
+work	1	20
