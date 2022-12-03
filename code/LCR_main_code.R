@@ -65,6 +65,7 @@ tail(p4future)
   text(log2(p4future[,2]+p4future[,4]), p4future$COLL.STR.LOGL, p4future$COLLEX, font=3, col = "darkgreen")
 
 
+
 # proficiency level 5 data load
 goingto.will.p5 <- read.table("DCA_p5.csv", header = TRUE, sep = "\t", quote = "\"")
 head(goingto.will.p5)
