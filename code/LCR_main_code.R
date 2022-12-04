@@ -101,18 +101,22 @@ ggplot(p3future, aes(x = COLL.STR.LOGL, y = COLLEX, col = ASSOC)) + # adding col
     geom_point() # no changes from v01
   
 
-# ggplot layer test v03  ----  
-  ggplot(p3future, aes(x = COLL.STR.LOGL, y = COLLEX, col = ASSOC, size = SIGNIF)) + # adding color based on association direction
+# ggplot layer test v03a  ----  
+  ggplot(p3future, aes(x = COLL.STR.LOGL, y = COLLEX, col = ASSOC, size = SIGNIF)) + # doesn't like size being attached to discrete variables
     geom_point() # no changes from v01
 
+# ggplot layer test v03b  ----  
+  ggplot(p3future, aes(x = COLL.STR.LOGL, y = COLLEX, col = ASSOC, shape = SIGNIF)) + # shape works okay for discrete, but chart is too small, or at least the preview - this would be a lot better if I could eliminate the non-significant results
+    geom_point() # no changes from v01
+  
 
 # ggplot layer test v04  ----  
-  ggplot(p3future, aes(x = SIGNIF, y = COLLEX, col = ASSOC, size = COLL.STR.LOGL)) + # adding color based on association direction
+  ggplot(p3future, aes(x = SIGNIF, y = COLLEX, col = ASSOC, size = COLL.STR.LOGL)) + # decent; arranges by signifigance on x axis, the COLL strength by size is intuitive, as is the ASSOC directional pull.
     geom_point() # no changes from v01
 
 
   # ggplot layer test v05  ----  
-  ggplot(p3future, aes(x = ASSOC, y = COLLEX, col = SIGNIF, size = COLL.STR.LOGL)) + # adding color based on association direction
+  ggplot(p3future, aes(x = ASSOC, y = COLLEX, col = SIGNIF, size = COLL.STR.LOGL)) + # test again
     geom_point() # no changes from v01
 
 
