@@ -1,0 +1,15 @@
+Title	Website	offline?	Target language(s)	Complexity features	Reference 	other
+Computerized Language Analysis (CLAN)	https://talkbank.org	YES	English, French, German	Some basic lexical and syntactic (TTR,VOCD, MLT, MLU) 	MacWhinney (2000)	
+The Compleat Lexical Tutor	http://www.lextutor.ca	no	English, French	Lexical rarity (a sophistication measure)	Cobb (n. d.)	
+Text Inspector	http://textinspector.com	paid, no	English	Lexical diversity	Bax (n. d.) 	
+L2 Syntactic Complexity Analyzer	http://www.personal.psu.edu/xxl13/downloads/l2sca.html	YES (in taassc)	English	14 syntactic	Lu (2010) 	
+Lexical Complexity Analyzer	http://www.personal.psu.edu/xxl13/downloads/lca.html	YES (CLI though)	English	25 lexical	Lu (2012) 	
+Coh-Metrix	http://cohmetrix.com	no	English	100+ lexico-grammatical	McNamara et al. (2012)	http://cohmetrix.memphis.edu/cohmetrixhome/documentation_indices.html
+T-Scan	https://github.com/proycon/tscan	no	Dutch	lexical, syntactic, morphological	Pander Maat et al. (2014)	
+Multidimensional Analysis Tagger (MAT)	https://sites.google.com/site/multidimensionaltagger/	YES	English 	Multiple lexico-grammatical, based on Biber (1988)	Nini (2014) 	
+Lancaster Vocab Analysis Tool(LancsLex)	http://corpora.lancs.ac.uk/vocab/index.php	No (csv upload)	English	Lexical diversity and rarity	Brezina and Gablasova(2015) 	
+CorpusExplorer	http://corpusexplorer.de	yes but German	German	45 lexical	Rüdiger (2016)	
+Tool for the Automatic Analysis of Syntactic Sophistication and lexico-grammatical Complexity (TAASSC)	https://www.linguisticanalysistools.org/taassc.html	YES	English 	Multiple	Kyle (2016) 	
+Common Text Analysis Platform (CTAP)	https://sifnos.sfs.uni-tuebingen.de/ctap/ctap.html	no	English (German in development)	170+ lexical and syntactic	Chen and Meurers (2016) 	https://xiaobin.ch/assests/pdf/Chen.Meurers-17EuroCALL-CTAP-slides.pdf
+Tool for the Automatic Analysis of Lexical Sophistication (TAALES)	https://www.linguisticanalysistools.org/taales.html	YES	English	400+ lexical	Kyle et al. (2017)	
+Morpho complexity tool	http://corpora.lancs.ac.uk/vocab/analyse_morph.php		English and Italian (French, German, Spanish in development)	Morphological (one index)	Brezina and Pallotti (2019)  	
