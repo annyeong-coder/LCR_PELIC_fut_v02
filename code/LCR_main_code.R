@@ -24,6 +24,8 @@ xPELIC.colnames <-(colnames(xPELIC)); xPELIC.colnames
 
 # Section 01:DCA analysis ----
 source("https://www.stgries.info/teaching/groningen/coll.analysis.r")
+install.packages("tidyverse")
+library("tidyverse")
 library(collostructions)
 install.packages("ggplot2")
 library(ggplot2)
