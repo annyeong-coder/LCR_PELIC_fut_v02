@@ -76,9 +76,6 @@ write.table(p3sigBGT, "data_processed/p3sigBGT.txt", quote=FALSE, sep="\t", row.
   text(log2(p3future[,2]+p3future[,4]), p3future$COLL.STR.LOGL, p3future$COLLEX, font=3, col = "darkorange3")
 
   
-
-  
-  
 # proficiency level 4 data load ----
 goingto.will.p4 <- read.table("DCA_p4.csv", header = TRUE, sep = "\t", quote = "\"")
 head(goingto.will.p4)
