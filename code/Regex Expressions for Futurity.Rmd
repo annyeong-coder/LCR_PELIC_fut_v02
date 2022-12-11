@@ -1,0 +1,79 @@
+# going to will Regex
+
+-   [test Regex code for future project here](https://regex101.com/)
+
+related: [[NPP_extended_search_and_Regex]]
+
+### Going to
+
+However, also needs negative version (not going to... going to not?) 
+
+#### improved v03
+
+`[VB0|VBG|VBI|VBM|VBN|VBR|VBZ] going_VVGK to_TO [a-zA-Z+]_V*`
+
+(note: there was NO examples of "going to NOT verb" for this one)
+
+#### improved v02
+
+`going_VVGK to_TO [a-zA-Z+]_V*`
+
+#### improved v01:
+
+`[a-zA-Z+] [Va-zA-Z+] going_VVGK to_TO [a-zA-Z+]_VVI` 1217 hits
+
+#### initial:
+
+`going VVGK to TO [a-zA-Z+] VVI`
+
+### Will
+
+still needs negation?
+
+#### improved?:
+
+`[a-zA-Z+] [Va-zA-Z+] going_VVGK to_TO [a-zA-Z+]_VVI` 1189 hits
+
+#### initial:
+
+`will_VM [a-zA-Z+] [Va-zA-Z+]`
+
+### other possible regex
+
+This has some possible advantages
+
+#### converted 'going to' example from above
+
+with explanations:
+
+`going_VVGK to_TO [a-zA-Z+]_V*`
+
+`going_VVGK to_TO` matches the characters going_VVGK to_TO literally (case sensitive) `_VVGK` is a tag `_TO` is a tag
+
+Match a single character present in the list below
+
+[a-zA-Z+]
+
+\_ matches the character \_ with index 9510 (5F16 or 1378) literally (case sensitive)
+
+V
+
+matches the character V with index 8610 (5616 or 1268) literally (case sensitive)
+
+-   matches the previous token between zero and unlimited times, as many times as possible, giving back as needed (greedy)
+
+#### general version (for backup)
+
+uses "record" as a noun as an example): `\brecord_N\w*\b`
+
+`\b` assert position at a word boundary: `(^\w|\w$|\W\w|\w\W)`
+
+`record_N` matches the characters record_N literally (case sensitive)
+
+`\w` matches any word character (equivalent to `[a-zA-Z0-9_]`) \* matches the previous token between zero and unlimited times, as many times as possible, giving back as needed (greedy)
+
+`\b` assert position at a word boundary: `(^\w|\w$|\W\w|\w\W)`
+
+# Regex short review
+
+`ba[d|n]` matches 'bad' or 'ban' `.` Matches any character (once) `\s` Matches whitespace `\S` Matches any non-whitespace character `+` Repeats a character one or more times `*` Repeats a character zero or more times `*?` Repeats a character zero or more times (non-greedy) `+?` Repeats a character one or more times (non-greedy) `[aeiou]` Matches a single character in the listed set `[^XYZ]` Matches a single character not in the listed set `[a-z0-9]` The set of characters can include a range `^` Matches the beginning of a line `$` Matches the end of the line
