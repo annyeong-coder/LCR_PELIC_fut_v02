@@ -6,7 +6,7 @@ related: [[NPP_extended_search_and_Regex]]
 
 ### Going to
 
-However, also needs negative version (not going to... going to not?) 
+However, also needs negative version (not going to... going to not?)
 
 #### improved v03
 
@@ -20,7 +20,8 @@ However, also needs negative version (not going to... going to not?)
 
 #### improved v01:
 
-`[a-zA-Z+] [Va-zA-Z+] going_VVGK to_TO [a-zA-Z+]_VVI` 1217 hits
+`[a-zA-Z+] [Va-zA-Z+] going_VVGK to_TO [a-zA-Z+]_VVI` 
+
 
 #### initial:
 

@@ -1,0 +1,4 @@
+Filler	Frequency
+1	aeh	394
+2	silence	332
+3	aehm	274

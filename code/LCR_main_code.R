@@ -19,6 +19,11 @@ head(xPELIC)
 
 xPELIC.colnames <-(colnames(xPELIC)); xPELIC.colnames
 
+install.packages(c("zipfR", "languageR", "rpart", "chron", "Hmisc", "Matrix", "lme4", "coda", "e1071", "ape", "tidyverse")) # list from Baayen's 2008
+
+library("zipfR"); library("languageR"); library("rpart");library("chron"); library("Hmisc"); library("Matrix"); library("lme4"); library("coda"); library("e1071"); library("ape"); library("tidyverse")
+
+mynewdataframe <- read.table(file.choose(), header=TRUE, sep="\t"); mynewdataframe
 
 # Only iff you want to delete all the variables that are there in the environment what you can do is you can use the “rm” with an argument “list” is equal to “ls” followed by a parenthesis. 
 
@@ -36,6 +41,7 @@ plot(goingto.will.p3)
 goingto.will.p2 <- read.table("DCA_p2.csv", header = TRUE, sep = "\t", quote = "\"")
 head(goingto.will.p2)
 p2future <- collex.dist(goingto.will.p2); p2future
+p2future[p2future$SIGNIF!="ns",]
 
   # proficiency level 2 data loading plot ----
   plot(log2(p2future[,2]+p2future[,4]), p2future$COLL.STR.LOGL, type="n",
@@ -43,15 +49,25 @@ p2future <- collex.dist(goingto.will.p2); p2future
   grid(); abline(h=0, lty=2); abline(v=0, lty=2)
   text(log2(p2future[,2]+p2future[,4]), p2future$COLL.STR.LOGL, p2future$COLLEX, font=3, col = "blueviolet")
 
+  
+  
+  
 
 # proficiency level 3 data loading  ---- 
 goingto.will.p3 <- read.table("DCA_p3.csv", header = TRUE, sep = "\t", quote = "\"")
 head(goingto.will.p3)
 p3future <- collex.dist(goingto.will.p3); p3future
+p3future[p3future$SIGNIF!="ns",]
 
-head(p3future)
+# displaying focused data sets then saving them
+p3future[p3future$SIGNIF!="ns" & p3future$ASSOC=="WILL",] # displays ns significance for WILL  
+p3future[p3future$SIGNIF!="ns" & p3future$ASSOC=="GOING_TO",] # displays ns significance for GOING_TO
 
-tail(p3future)
+p3sigWILL<- c(p3future[p3future$SIGNIF!="ns" & p3future$ASSOC=="WILL",]) # displays ns significance for WILL  
+p3sigBGT <- c(p3future[p3future$SIGNIF!="ns" & p3future$ASSOC=="GOING_TO",]) # displays ns significance for GOING_TO
+
+write.table(p3sigWILL, "data_processed/p3sigWILL2.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+write.table(p3sigBGT, "data_processed/p3sigBGT.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
 
   # proficiency level 3 data plot ----
   plot(log2(p3future[,2]+p3future[,4]), p3future$COLL.STR.LOGL, type="n",
@@ -59,12 +75,15 @@ tail(p3future)
   grid(); abline(h=0, lty=2); abline(v=0, lty=2)
   text(log2(p3future[,2]+p3future[,4]), p3future$COLL.STR.LOGL, p3future$COLLEX, font=3, col = "darkorange3")
 
+  
+
+  
+  
 # proficiency level 4 data load ----
 goingto.will.p4 <- read.table("DCA_p4.csv", header = TRUE, sep = "\t", quote = "\"")
 head(goingto.will.p4)
-p4future <- collex.dist(goingto.will.p4); p4future
-head(p4future)
-tail(p4future)
+p4future <- collex.dist(goingto.will.p4); p4future; 
+p4future[p4future$SIGNIF!="ns",]
 
   # proficiency level 4 data plot ----
   plot(log2(p4future[,2]+p4future[,4]), p4future$COLL.STR.LOGL, type="n",
@@ -78,8 +97,7 @@ tail(p4future)
 goingto.will.p5 <- read.table("DCA_p5.csv", header = TRUE, sep = "\t", quote = "\"")
 head(goingto.will.p5)
 p5future <- collex.dist(goingto.will.p5); p5future
-head(p5future)
-tail(p5future)
+p5future[p5future$SIGNIF!="ns",]
 
   # proficiency level 5 data plot ----
   plot(log2(p5future[,2]+p5future[,4]), p5future$COLL.STR.LOGL, type="n",
