@@ -43,6 +43,18 @@ head(goingto.will.p2)
 p2future <- collex.dist(goingto.will.p2); p2future
 p2future[p2future$SIGNIF!="ns",]
 
+# displaying focused data sets then saving them
+p2future[p2future$SIGNIF!="ns" & p2future$ASSOC=="WILL",] # displays ns significance for WILL  
+p2future[p2future$SIGNIF!="ns" & p2future$ASSOC=="GOING_TO",] # displays ns significance for GOING_TO
+
+p2sigWILL<- c(p2future[p2future$SIGNIF!="ns" & p2future$ASSOC=="WILL",]) # displays ns significance for WILL  
+p2sigBGT <- c(p2future[p2future$SIGNIF!="ns" & p2future$ASSOC=="GOING_TO",]) # displays ns significance for GOING_TO
+
+write.table(p2sigWILL, "data_processed/p2sigWILL2.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+write.table(p2sigBGT, "data_processed/p2sigBGT.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+write.table(p2future, "data_processed/p2futureNSall.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+
+
   # proficiency level 2 data loading plot ----
   plot(log2(p2future[,2]+p2future[,4]), p2future$COLL.STR.LOGL, type="n",
        xlab="Logged co-occurrence frequency", ylab="Association (log odds ratio)")
@@ -82,6 +94,16 @@ head(goingto.will.p4)
 p4future <- collex.dist(goingto.will.p4); p4future; 
 p4future[p4future$SIGNIF!="ns",]
 
+# displaying focused data sets then saving them
+p4future[p4future$SIGNIF!="ns" & p4future$ASSOC=="WILL",] # displays ns significance for WILL  
+p4future[p4future$SIGNIF!="ns" & p4future$ASSOC=="GOING_TO",] # displays ns significance for GOING_TO
+
+p4sigWILL<- c(p4future[p4future$SIGNIF!="ns" & p4future$ASSOC=="WILL",]) # displays ns significance for WILL  
+p4sigBGT <- c(p4future[p4future$SIGNIF!="ns" & p4future$ASSOC=="GOING_TO",]) # displays ns significance for GOING_TO
+
+write.table(p4sigWILL, "data_processed/p4sigWILL2.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+write.table(p4sigBGT, "data_processed/p4sigBGT.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+
   # proficiency level 4 data plot ----
   plot(log2(p4future[,2]+p4future[,4]), p4future$COLL.STR.LOGL, type="n",
        xlab="Logged co-occurrence frequency", ylab="Association (log odds ratio)")
@@ -95,6 +117,17 @@ goingto.will.p5 <- read.table("DCA_p5.csv", header = TRUE, sep = "\t", quote = "
 head(goingto.will.p5)
 p5future <- collex.dist(goingto.will.p5); p5future
 p5future[p5future$SIGNIF!="ns",]
+
+# displaying focused data sets then saving them
+p5future[p5future$SIGNIF!="ns" & p5future$ASSOC=="WILL",] # displays ns significance for WILL  
+p5future[p5future$SIGNIF!="ns" & p5future$ASSOC=="GOING_TO",] # displays ns significance for GOING_TO
+
+p5sigWILL<- c(p5future[p5future$SIGNIF!="ns" & p5future$ASSOC=="WILL",]) # displays ns significance for WILL  
+p5sigBGT <- c(p5future[p5future$SIGNIF!="ns" & p5future$ASSOC=="GOING_TO",]) # displays ns significance for GOING_TO
+
+write.table(p5sigWILL, "data_processed/p5sigWILL2.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+write.table(p5sigBGT, "data_processed/p5sigBGT.txt", quote=FALSE, sep="\t", row.names=F, col.names=T)
+
 
   # proficiency level 5 data plot ----
   plot(log2(p5future[,2]+p5future[,4]), p5future$COLL.STR.LOGL, type="n",
