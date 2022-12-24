@@ -135,7 +135,13 @@ write.table(p5sigBGT, "data_processed/p5sigBGT.txt", quote=FALSE, sep="\t", row.
   grid(); abline(h=0, lty=2); abline(v=0, lty=2)
   text(log2(p5future[,2]+p5future[,4]), p5future$COLL.STR.LOGL, p5future$COLLEX, font=3, col = "darkblue")
 
-  
+
+# write significant results to csv file
+  write.csv(p2future[p2future$SIGNIF!="ns",],"p2futuresigresults.csv", row.names=FALSE)
+  write.csv(p3future[p3future$SIGNIF!="ns",],"p3futuresigresults.csv", row.names=FALSE)
+  write.csv(p4future[p4future$SIGNIF!="ns",],"p4futuresigresults.csv", row.names=FALSE)
+  write.csv(p5future[p5future$SIGNIF!="ns",],"p5futuresigresults.csv", row.names=FALSE)
+    
   
 
 # ggplot layer test v01  ----
